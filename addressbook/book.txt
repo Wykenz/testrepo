@@ -1,0 +1,7 @@
+pam|pem|pam@e.com|11
+Bob|Jin|bobjin@g.com|5654577
+ram|dwq|md@c.com|83848
+bob|smith|bob@b.com|735
+Tim|Smith|bob@a.com|835
+Lina|Dobra|dasd@df.com|887378
+jcsn|kxl|md@j.co|992
