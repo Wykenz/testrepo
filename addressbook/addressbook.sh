@@ -30,9 +30,9 @@ function edit_entry {
     then
         echo -e "\e[31mAll entries are required. Write in email, Firstname, Lastname, phone number!\e[0m"
     else
-        if grep -i "${EMAIL}" "${ADDRESSBOOK_FILE}"
+        if grep -iw "${EMAIL}" "${ADDRESSBOOK_FILE}"
         then
-            sed -i "/${EMAIL}/d" "${ADDRESSBOOK_FILE}"
+            sed -iw "/${EMAIL}/d" "${ADDRESSBOOK_FILE}"
 
             echo "${FIRSTNAME}|${LASTNAME}|${EMAIL}|${PHONE}" >> "${ADDRESSBOOK_FILE}"
             echo -e "\e[32mEntry edited successfully.\e[0m"
@@ -71,16 +71,31 @@ function search_entries {
 function main {
 
     case "${ACTION}" in
-            ("search") search_entries
-            ;;
-            ("add") add_entry 
-            ;;
-            ("remove") remove_entry
-            ;;
-            ("edit") edit_entry
-            ;;
-            (*) echo -e "\e[31mStart with an action: |search|add|remove|edit|\e[0m" 
-            ;;
+            search) 
+                search_entries
+
+                ;;
+
+            add) 
+                add_entry 
+
+                ;;
+
+            remove) 
+                remove_entry
+
+                ;;
+
+            edit) 
+                edit_entry
+
+                ;; 
+                
+            (*) 
+                echo -e "\e[31mStart with an action: |search|add|remove|edit|\e[0m" 
+
+                ;;
+
     esac
 
 }
