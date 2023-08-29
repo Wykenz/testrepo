@@ -65,7 +65,7 @@ function remove_entry {
 
 function search_entries {    
 
-   grep -iw --color "${FIRSTNAME}\|${LASTNAME}\|${EMAIL}\|${PHONE}" "${ADDRESSBOOK_FILE}"
+    grep -iw --color "${FIRSTNAME}\|${LASTNAME}\|${EMAIL}\|${PHONE}" "${ADDRESSBOOK_FILE}"
 }
 
 function main {
