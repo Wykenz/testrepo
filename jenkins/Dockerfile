@@ -14,12 +14,13 @@ RUN groupadd -g 1001 jenkins && \
 RUN curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key > /usr/share/keyrings/jenkins-keyring.asc && \
     echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/" > /etc/apt/sources.list.d/jenkins.list && \
     apt-get update && \
-    apt install jenkins -y --no-install-recommends
+    apt install jenkins -y --no-install-recommends && \
+    apt-get clean && \
+    rm -rf /var/lib/apt
 
 RUN mkdir /var/cache/jenkins/war && \
-    chown jenkins /var/cache/jenkins/war
-
-RUN chmod +x /tini
+    chown -R jenkins:jenkins /var/cache/jenkins/ && \
+    chmod +x /tini
 
 USER jenkins
 
