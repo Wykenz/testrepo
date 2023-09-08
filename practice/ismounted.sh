@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DIR=$1
+DIR=$1d
 
 function check_usage {
     if [ -z "${DIR}" ]

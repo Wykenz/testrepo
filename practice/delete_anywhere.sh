@@ -15,13 +15,13 @@ function check_usage {
 function delete {
     echo "Do you want to delete the files? y/n"
 
+    local choice
+
     read -r choice
 
     if [ "${choice}" = "y" ]
     then
-        sudo find ~ -iname "${NAME}" -delete
-    else
-        return
+        sudo find / -iname "${NAME}" -delete
     fi
 }
 
@@ -29,19 +29,23 @@ function main {
     check_usage
 
     search
+
+    delete
 }
 
 function search {
-    search=$(sudo find ~ -iname "${NAME}" | grep --color "${NAME}")
+    local search
+    
+    search=$(sudo find / -iname "${NAME}")
 
     echo "${search}"
 
-    if [ -n "${search}" ]
+    if [ -z "${search}" ]
     then
-        delete
-    else
         echo "No file with that name"
+
+        exit 1
     fi
 }
 
-main "$@"
+main

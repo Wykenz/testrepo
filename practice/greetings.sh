@@ -32,4 +32,4 @@ function main {
     greetings
 }
 
-main "$@"
+main

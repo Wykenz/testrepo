@@ -16,13 +16,13 @@ function check_usage {
 function main {
     check_usage
 
-    pass_generate
+    generate_pass
 }
 
-function pass_generate {
+function generate_pass {
     if [[ ! "${QUANTITY}" =~ ^[0-9]+$ ]] || [[ ! "${LENGHT}" =~ ^[0-9]+$ ]]
     then
-        echo "This input is not a number" >&2
+        echo "This input is not a number"
 
         exit 1
     else
