@@ -1,26 +1,35 @@
 #!/bin/bash
 
-HOUR=$(date +%H)
 TIME=$(date +%H:%M)
 
-echo "The time is: ${TIME}"
-
 function greetings {
-    if [[ ${HOUR} -lt 9 ]]
+    echo "The time is: ${TIME}"
+
+    if [[ ${TIME} < "10:00" ]] && [[ ${TIME} > "04:59" ]]
     then
         echo "Good morning, ${USER}"
-    elif [[ ${HOUR} -lt 12 ]]
+
+    elif [[ ${TIME} < "12:00" ]] && [[ ${TIME} > "09:59" ]]
     then
         echo "Good day, ${USER}"
-    elif [[ ${HOUR} -lt 18 ]]
+
+    elif [[ ${TIME} < "18:00" ]] && [[ ${TIME} > "11:59" ]]
     then
         echo "Good afternoon, ${USER}"
-    elif [[ ${HOUR} -lt 20 ]]
+
+    elif [[ ${TIME} < "20:00" ]] && [[ ${TIME} > "17:59" ]]
     then
         echo "Good evening, ${USER}"
-    elif [[ ${HOUR} -lt 24 ]]
+
+    elif [[ ${TIME} < "24:00" ]] || [[ ${TIME} < "05:00" ]]
     then
         echo "Good night, ${USER}"
+        
     fi
 }
- greetings
+
+function main {
+    greetings
+}
+
+main "$@"

@@ -2,6 +2,16 @@
 
 NAME=$1
 
+function check_usage {
+    if [ -z "${NAME}" ]
+    then
+        echo "Type the name of the file or directory you want to delete."
+        echo "example: $0 filename"
+
+        exit 1
+    fi
+}
+
 function delete {
     echo "Do you want to delete the files? y/n"
 
@@ -16,13 +26,22 @@ function delete {
 }
 
 function main {
-    search
+    check_usage
 
-    delete
+    search
 }
 
 function search {
-    sudo find ~ -iname "${NAME}" | grep --color "${NAME}"
+    search=$(sudo find ~ -iname "${NAME}" | grep --color "${NAME}")
+
+    echo "${search}"
+
+    if [ -n "${search}" ]
+    then
+        delete
+    else
+        echo "No file with that name"
+    fi
 }
 
 main "$@"

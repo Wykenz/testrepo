@@ -4,29 +4,38 @@ LENGHT=$2
 QUANTITY=$1
 
 function check_usage {
-    if [ ! -n "${LENGHT}" ]  || [ ! -n "${QUANTITY}" ]
+    if [ -z "${LENGHT}" ]  || [ -z "${QUANTITY}" ]
     then
         echo "Type the number of passwords you want and the lenght of them."
         echo "example: $0 5 10"
-    else
-        pass_generate
+        
+        exit 1
     fi
 }
 
 function main {
     check_usage
+
+    pass_generate
 }
 
 function pass_generate {
-    echo "Here are your passwords, ${USER} :)"
-    echo " "
+    if [[ ! "${QUANTITY}" =~ ^[0-9]+$ ]] || [[ ! "${LENGHT}" =~ ^[0-9]+$ ]]
+    then
+        echo "This input is not a number" >&2
 
-    for ((n=0;n<"${PASS_QUANTITY}";n++))
-    do 
-        tr -dc 'A-Za-z0-9!"#$%&'\''()*+,-./:;<=>?@[\]^_`{|}~' </dev/urandom | head -c "${PASS_LENGHT}"
+        exit 1
+    else
+        echo "Here are your passwords, ${USER}"
+        echo " "
 
-        echo
-    done
+        for ((n=0;n<"${QUANTITY}";n++))
+        do 
+            tr -dc 'A-Za-z0-9!"#$%&'\''()*+,-./:;<=>?@[\]^_`{|}~' </dev/urandom | head -c "${LENGHT}"
+
+            echo
+        done
+    fi
 }
 
 main "${@}"
