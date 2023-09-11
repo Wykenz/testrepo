@@ -5,8 +5,8 @@
 YES_ACCENTS="íÍúÚüÜőŐöÖóÓüÜéÉáÁ"
 NO_ACCENTS="iIuUuUoOoOoOuUeEaA"
 remove_accents_tr() {
-    local text="$1"
-    echo "$text" | tr $YES_ACCENTS $NO_ACCENTS 
+	local text="$1"
+	echo "$text" | tr $YES_ACCENTS $NO_ACCENTS 
 }
 
 read -p "Enter a word with accented characters: " input_word

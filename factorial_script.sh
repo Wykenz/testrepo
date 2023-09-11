@@ -1,14 +1,14 @@
 #!/bin/bash
 
 calculate_factorial() {
-    local n=$1
-    local factorial=1
+	local n=$1
+	local factorial=1
 
-    for (( i = 1; i <= n; i++ )); do
-        factorial=$((factorial * i))
-    done
+	for (( i = 1; i <= n; i++ )); do
+		factorial=$((factorial * i))
+	done
 
-    echo "$factorial"
+	echo "$factorial"
 }
 echo -n "Enter a number: "
 read number

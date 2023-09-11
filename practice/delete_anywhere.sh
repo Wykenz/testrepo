@@ -3,49 +3,49 @@
 NAME=$1
 
 function check_usage {
-    if [ -z "${NAME}" ]
-    then
-        echo "Type the name of the file or directory you want to delete."
-        echo "example: $0 filename"
+	if [ -z "${NAME}" ]
+	then
+		echo "Type the name of the file or directory you want to delete."
+		echo "example: $0 filename"
 
-        exit 1
-    fi
+		exit 1
+	fi
 }
 
 function delete {
-    echo "Do you want to delete the files? y/n"
+	echo "Do you want to delete the files? y/n"
 
-    local choice
+	local choice
 
-    read -r choice
+	read -r choice
 
-    if [ "${choice}" = "y" ]
-    then
-        sudo find / -iname "${NAME}" -delete
-    fi
+	if [ "${choice}" = "y" ]
+	then
+		sudo find / -iname "${NAME}" -delete
+	fi
 }
 
 function main {
-    check_usage
+	check_usage
 
-    search
+	search
 
-    delete
+	delete
 }
 
 function search {
-    local search
-    
-    search=$(sudo find / -iname "${NAME}")
+	local search
+	
+	search=$(sudo find / -iname "${NAME}")
 
-    echo "${search}"
+	echo "${search}"
 
-    if [ -z "${search}" ]
-    then
-        echo "No file with that name"
+	if [ -z "${search}" ]
+	then
+		echo "No file with that name"
 
-        exit 1
-    fi
+		exit 1
+	fi
 }
 
 main
