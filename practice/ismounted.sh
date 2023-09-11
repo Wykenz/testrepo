@@ -3,11 +3,11 @@
 DIR=${1}
 
 function check_if_mounted {
-	MOUNTED=$(lsblk -o MOUNTPOINT | grep --color "${DIR}")
+	MOUNTED=$(lsblk -o MOUNTPOINT | grep --color "${DIR}$")
 
 	if [ -n  "${MOUNTED}" ]
 	then
-		lsblk | grep --color "${DIR}"
+		lsblk | grep --color "${DIR}$"
 	else
 		echo "This directory is not mounted"
 	fi
