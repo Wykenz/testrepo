@@ -3,12 +3,10 @@
 function check_diskspace {
 	local percent
 
-	percent=$(list_numbers)
+	percent=$(list_percent)
 
 	if [ -n "${percent}" ]
 	then
-		percent=$(list_percent)
-
 		echo "In these Filesystems more than 80% storage space is full:"
 		
 		df -h | grep --color "${percent}"
@@ -17,27 +15,17 @@ function check_diskspace {
 	fi
 }
 
-function list_numbers {
+function list_percent {
 	local line
+
 
 	while read -r line
 	do
-		if [ "${line}" -gt 80 ]
+		if [ "${line%'%'}" -gt 80 ]
 		then
 			echo "${line}"
 		fi
-	done < <(df -h | awk '{print$5}' | tail -n +2 | sed 's/%//')
-}
-
-function list_percent {
-	local number
-
-	number=$(list_numbers)
-
-	while read -r number
-	do
-		echo "${number}%"
-	done < <(echo "${number}")
+	done < <(df -h | awk '{print $5}' | tail -n +2)
 }
 
 check_diskspace
