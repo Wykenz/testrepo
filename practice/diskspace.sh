@@ -3,12 +3,10 @@
 function check_diskspace {
 	local percent
 
-	percent=$(list_numbers)
+	percent=$(list_percent)
 
 	if [ -n "${percent}" ]
 	then
-		percent=$(list_percent)
-
 		if [ -n "${percent}" ]
 		then
 			local line
@@ -24,26 +22,15 @@ function check_diskspace {
 }
 
 function list_percent {
-	local number
-
-	number=$(list_numbers)
-
-	while read -r number
-	do
-		echo "${number}%"
-	done < <(echo "${number}")
-}
-
-function list_numbers {
 	local line
 
 	while read -r line
 	do
-		if [ "${line}" -lt 20 ]
+		if [ "${line%'%'}" -lt 20 ]
 		then
 			echo "${line}"
 		fi
-	done < <(df -h | awk '{print$5}' | tail -n +2 | sed 's/%//')
+	done < <(df -h | awk '{print$5}' | tail -n +2)
 }
 
 check_diskspace
