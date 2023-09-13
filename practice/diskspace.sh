@@ -7,7 +7,7 @@ function check_diskspace {
 
 	if [ -n "${percent}" ]
 	then
-		echo "In these Filesystems more than 80% storage space is full:"
+		echo "In these filesystems, more than 80% of the storage space is full:"
 		
 		df -h | grep --color "${percent}"
 	else
