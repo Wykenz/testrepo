@@ -18,7 +18,7 @@ local var
 
 var="content"
 ```
-- When calling a variable use it like "${VAR}" not just $VAR. Sometimes the "" can be left out
+- When calling a variable use it like `"${VAR}"` not just `$VAR`. Sometimes the `""` can be left out
 
 ## Empty lines
 
@@ -33,7 +33,7 @@ else
 	echo "Variable not set"
 fi
 ```
-- In case statements, put an empty line before the ;;
+- In case statements, put an empty line before the `;;`
 ```
 case ${VAR} in
 	-a)
