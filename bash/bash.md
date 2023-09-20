@@ -4,7 +4,7 @@
 ## Tab
 
 - Make sure you use tab instead of spaces for segmentation
-- Check your editor's setting if spaces set automatically
+- Check your editor's settings if spaces set automatically
 
 ## Variables
 
