@@ -66,3 +66,19 @@ function name {
 	content
 }
 ```
+
+## Alphabetical order
+
+- Use alphabetical order when defining functions and variables
+- Use alphabetical order with command arguments (exception if it makes the code functionally wrong)
+
+## Naming guidelines
+
+### Function naming:
+- Functions names should start with a verb. E.g `check_usage` or `print_data`. If a function returns data it should start with `get_ like` `get_latest_available_zulu_version`. When the function changes some value, it should start with `set_` like `set_vm_max_map_count`.
+
+### Default function names:
+- check_usage
+- lcd
+- main
+- print_help
