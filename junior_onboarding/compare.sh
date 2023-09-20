@@ -1,6 +1,5 @@
 #!/bin/bash
 
-${DEBUG}
 
 function arguments {
 	while [ "${1}" != "" ]
@@ -19,9 +18,7 @@ function arguments {
 
 				;;
 			-d)
-				shift
-
-				DEBUG=$(set -x)
+				set -x
 
 				;;
 			*)
@@ -36,6 +33,11 @@ function arguments {
 }
 
 function compare_date {
+	if [ -z "${P1}" ] || [ -z "${P2}" ]
+	then
+		exit 1
+	fi
+
 	local date_p1
 	local date_p2
 
@@ -54,6 +56,14 @@ function main {
 	arguments "$@"
 
 	compare_date
+}
+
+function print_help {
+	echo "
+	help:
+	-p1 fullpath of first path
+	-p2 fullpath of second path
+	-d turn on debug mode"
 }
 
 main "$@"

@@ -2,4 +2,8 @@
 
 PATH=${1}
 
-echo "${PATH%/*/*}"
+CUT=${PATH#/*/}
+PART=${PATH%"${CUT}"}
+FIRSTDIR=${PART%/}
+
+echo "${FIRSTDIR}"
