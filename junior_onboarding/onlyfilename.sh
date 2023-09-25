@@ -1,8 +1,12 @@
 #!/bin/bash
 
-PATH=${1}
+FULLPATH=${1}
 
-PATH="${PATH##*/}"
-PATH="${PATH%.*}"
+function cut_input {
+	WITHEXTENSION="${FULLPATH##*/}"
+	FILENAME="${WITHEXTENSION%.*}"
+	
+	echo "${FILENAME}"
+}
 
-echo "${PATH}"
+cut_input

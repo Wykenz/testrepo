@@ -1,5 +1,5 @@
 #!/bin/bash
 
-PATH=${1}
+FULLPATH=${1}
 
-echo "${PATH%/*}"
+echo "${FULLPATH%/*}"

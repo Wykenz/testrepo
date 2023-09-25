@@ -1,7 +1,6 @@
 #!/bin/bash
 
-
-function arguments {
+function check_usage {
 	while [ "${1}" != "" ]
 	do
 		case ${1} in
@@ -35,6 +34,8 @@ function arguments {
 function compare_date {
 	if [ -z "${P1}" ] || [ -z "${P2}" ]
 	then
+		print_help
+
 		exit 1
 	fi
 
@@ -48,22 +49,21 @@ function compare_date {
 	then
 		echo "${P1} was created at: ${date_p1}"
 	else
-		echo "${P2} was creater at: ${date_p2}"
+		echo "${P2} was created at: ${date_p2}"
 	fi
 }
 
 function main {
-	arguments "$@"
+	check_usage "$@"
 
 	compare_date
 }
 
 function print_help {
-	echo "
-	help:
-	-p1 fullpath of first path
-	-p2 fullpath of second path
-	-d turn on debug mode"
+	echo "help:"
+	echo "-p1 fullpath of first path"
+	echo "-p2 fullpath of second path"
+	echo "-d turn on debug mode"
 }
 
 main "$@"

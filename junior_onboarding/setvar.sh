@@ -1,6 +1,8 @@
 #!/bin/bash
 
-VAR=${1:?"Error. You didn't set the variable"}
+set -u
+
+VAR=${1}
 
 echo "${VAR}"
 

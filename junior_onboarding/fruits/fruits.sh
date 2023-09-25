@@ -1,10 +1,10 @@
 #!/bin/bash
 
-IFS=' '
+IFS=$'\n'
 
 file="fruits.txt"
 
-for var in $(cat $file) 
-do 
-echo "$var"
+for f in $(cat $file)
+do
+	echo "${f}"
 done 

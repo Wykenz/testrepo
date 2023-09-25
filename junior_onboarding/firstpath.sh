@@ -1,9 +1,13 @@
 #!/bin/bash
 
-PATH=${1}
+FULLPATH=${1}
 
-CUT=${PATH#/*/}
-PART=${PATH%"${CUT}"}
-FIRSTDIR=${PART%/}
+function cut_input {
+	CUT=${FULLPATH#/*/}
+	PART=${FULLPATH%"${CUT}"}
+	FIRSTDIR=${PART%/}
 
-echo "${FIRSTDIR}"
+	echo "${FIRSTDIR}"
+}
+
+cut_input
