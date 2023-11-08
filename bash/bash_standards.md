@@ -2,9 +2,9 @@
 ---
 This directory contains the principles, standards and policies that need to be followed during bash scripting.
 
-## [General guidelines](general_guidelines.sh)
+## [General guidelines](guidelines/general_guidelines.sh)
 
-## [Coding guidelines](coding_guidelines.sh)
+## [Coding guidelines](guidelines/coding_guidelines.sh)
 
 ## Examples
 [sample.sh](sample.sh)
