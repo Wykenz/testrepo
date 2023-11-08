@@ -27,7 +27,7 @@ Example:
 	curl -H 'accept: */*' -L -s -X 'GET' -o /tmp/jdk11.deb "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/binary/?arch=${TARGETARCH}&bundle_type=jdk&ext=deb&hw_bitness=64&java_version=11.0&javafx=false&os=linux&zulu_version=${LABEL_ZULU_11_VERSION}"
 
 ## Argument Handling
-When the script requires argument(s) create a `check_usage` function which handles the arguments with a while loop. Define the default values for optional arguments at the start of the function. If the argument is a flag (e.g.: no value is passed after it, like help) don't use the `shift` keyword, if a value is passed after an argument use the `shift` keyword and assign the value of `$1` to the destination variable. After the loop check if the mandatory arguments are set.
+When the script requires argument(s) create a `check_usage` function which handles the arguments with a while loop. Define the default values for optional arguments at the start of the function. If the argument is a flag (e.g.: no value is passed after it, like help) do not use the `shift` keyword, if a value is passed after an argument use the `shift` keyword and assign the value of `$1` to the destination variable. After the loop check if the mandatory arguments are set.
 Always create a help function when using arguments called `print_help`.
 
 Example:
@@ -193,7 +193,7 @@ Example:
 		echo "The domain argument is required."
 
 		exit 1
-	fi
+	fi 
 
 
 ## String handling
