@@ -1,6 +1,7 @@
 # Coding guidelines
 ---
-Examples can be found in [sample.sh](sample.sh).
+Find examples in [sample.sh](sample.sh).
+
 ## Alphabetical Order
 Always use alphabetical order when defining functions and variables.
 
@@ -26,9 +27,9 @@ Example:
 
 	curl -H 'accept: */*' -L -s -X 'GET' -o /tmp/jdk11.deb "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/binary/?arch=${TARGETARCH}&bundle_type=jdk&ext=deb&hw_bitness=64&java_version=11.0&javafx=false&os=linux&zulu_version=${LABEL_ZULU_11_VERSION}"
 
-## Argument Handling
+## Argument handling
 When the script requires argument(s) create a `check_usage` function which handles the arguments with a while loop. Define the default values for optional arguments at the start of the function. If the argument is a flag (e.g.: no value is passed after it, like help) do not use the `shift` keyword, if a value is passed after an argument use the `shift` keyword and assign the value of `$1` to the destination variable. After the loop check if the mandatory arguments are set.
-Always create a help function when using arguments called `print_help`.
+Create a help function when using arguments called `print_help`.
 
 Example:
 
@@ -67,18 +68,8 @@ function check_usage {
 
 			exit 1
 		fi
-
 	done
 }
-
-## cd into directories
-Instead of just running "cd /tmp/test", create a method called `lcd` and use this method to move between folders. This will ensure that the script will exit if the cd was not successful.
-
-Example:
-
-	function lcd {
-		cd "${1}" || exit 3
-	}
 
 ## Checking if a string contains another one
 Use `grep -q` when checking for a substring.
@@ -93,11 +84,9 @@ Example:
 	fi
 
 ## Checking if a variable is set
-Don't use the `-z` or `-v` options to check if a variable is empty, use `! -n`.
-
 Example:
 
-	if [ ! -n "${DOMAIN}" ]
+	if [ -z "${DOMAIN}" ]
 	then
 		echo "The domain argument is required."
 
@@ -110,12 +99,13 @@ For command substitution use `$(CMD)` instead of **\`CMD\`**
 Example:
 
 	curl_content=$(echo "${curl_content}" | grep" ${CONTENT}")
+
 ## Condition declaration
-Never use semicolon separated conditions. Use the following format:
+Use semicolon separated conditions. Use the following format:
 
 	if condition
 	then
-	echo "Do something"
+		echo "Do something"
 	elif condition
 	then
 		echo "Do something else"
@@ -135,11 +125,12 @@ Example:
 	fi
 
 ## Creating directories
-When creating a directory always use the `-p` argument. This will create the parent directories as needed and won't throw an error if they do exits, making any folder check unnecessary.
+When creating a directory use the `-p` argument. This will create the parent directories as needed and will not throw an error if they do exits, making any folder check unnecessary.
 
 Example:
 
 	mkdir -p "/tmp/test/test2/destination"
+
 ## Function declaration
 Alway use the function keyword without the round brackets when declaring a function.
 
@@ -153,7 +144,7 @@ Example:
 	}
 
 ## Help Function
-Always create a help function when using arguments called `print_help`.
+Create a help function when using arguments called `print_help`.
 
 Example:
 
@@ -175,7 +166,7 @@ Example:
 	}
 
 ## Multiline echo
-Don't use the `-e` option for echo, instead use multiple echo command.
+Do not use the `-e` option for echo, instead use multiple echo command.
 
 Example:
 
@@ -184,30 +175,29 @@ Example:
 	echo ""
 
 ## Line break separation
-Always put a new line before an `exit` or `return` command.
+Put a new line before an `exit` or `return` command.
 
 Example:
 
-	if [ ! -n "${DOMAIN}" ]
+	if [ -z "${DOMAIN}" ]
 	then
 		echo "The domain argument is required."
 
 		exit 1
-	fi 
-
+	fi
 
 ## String handling
 Use [this guide](https://devhints.io/bash#parameter-expansions).
 
-
 ## Timestamp format
-For timestamp always use the following format: `year-month-day_hour-minute-second'`
+For timestamp use the following format: `year-month-day_hour-minute-second'`
 
 Example:
 
 	local timestamp=$(date +'%Y-%m-%d_%H-%M-%S')
+
 ## Variable handling
-Always use curly bracket for variables.
+Use curly bracket for variables.
 
 Example:
 

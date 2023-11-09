@@ -17,4 +17,4 @@ If you are sharing functions between scripts in the same domain, create a [_comm
 	source ./_common.sh
 
 A top level collection of functions in [_liferay_common.sh](_liferay_common.sh) is maintained in the [liferay/liferay-docker](https://github.com/liferay/liferay-docker) repository.
-If it is included it copied to the local directory and updated manually if the upstream file changes.
+If the file is included copy it to the local directory and update manually if the upstream file changes.

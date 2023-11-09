@@ -57,8 +57,8 @@ Default function names:
 - print_help
 
 ## Variable naming
-1. Local variables are lowercase and always defined with local. Use underscore to separate words: `local base_image_version`.
-2. Global variable names are always uppercase: `LOGS_DIR`.
+1. Local variables are lowercase and defined with local. Use underscore to separate words: `local base_image_version`.
+2. Global variable names are uppercase: `LOGS_DIR`.
 3. External variables are usually prefixed with `LIFERAY_`.
-4. When referring to a directory / folder, always use `DIR`.
-5. Always refer to the variable with the `${variable_name}` method, examples: `${base_image_version}` or `${LOGS_DIR}`
+4. When referring to a directory / folder, use `DIR`.
+5. Refer to the variable with the `${variable_name}` method, examples: `${base_image_version}` or `${LOGS_DIR}`
