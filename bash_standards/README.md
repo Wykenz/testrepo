@@ -7,7 +7,7 @@ This directory contains the principles, standards and policies that need to be f
 ## [Coding guidelines](guidelines/coding_guidelines.md)
 
 ## Examples
-[sample.sh](sample.sh)
+Examples can be found in [sample.sh](sample.sh)
 
 ## Common files
 If you are sharing functions between scripts in the same domain, create a [_common.sh](_common.sh) file and source it in the beginning of your shell scripts.
